@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Temperature Hot</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(images/bg-image.jpg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input id="city-name" type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <div class="input-group-append">
+                    <button id="submit" type="button" class="btn btn-danger">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="weather-status text-white text-center">
+            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="country-name">dhaka</h1>
+            <h3 id="tempereture"><span>38.06</span>&deg;C</h3>
+            <h1 id="condition" class="lead">Clouds</h1>
+         </div>
+
+         <script>
+        // function cityHandler (){
+        //     document.getElementById("controler").addEventListener("click", function(){
+        //     const cityName =  document.getElementById("city-name").value;
+                                                                                                                                                  
+        //     })
+        //     weatherCalculation();
+        // }
+          //function weatherCalculation(){
+            document.getElementById("submit").addEventListener("click", function(){
+             const cityName = document.getElementById("city-name").value;
+                              
+             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=6f13b23c89db2440ec011448e3c87513`)
+
+             .then(res=>res.json())
+             .then(data=>{
+                 //console.log(data)
+                 const name = data.name
+                  const tem =data.main
+                 const des = (data.weather[0].main)
+                 const res = tem.temp
+                // const time = data.dt
+                 const weather = Math.round(res-273.15)
+                document.getElementById('country-name').innerText =name;
+              document.getElementById('tempereture').innerText = weather+ `°C`;
+              document.getElementById('condition').innerText = des;
+             })
+            })
+            
+          
+         </script>
+    </div>
+
+</body>
+
+</html>
