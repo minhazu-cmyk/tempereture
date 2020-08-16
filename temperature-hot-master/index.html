@@ -36,18 +36,11 @@
          </div>
 
          <script>
-        // function cityHandler (){
-        //     document.getElementById("controler").addEventListener("click", function(){
-        //     const cityName =  document.getElementById("city-name").value;
-                                                                                                                                                  
-        //     })
-        //     weatherCalculation();
-        // }
-          //function weatherCalculation(){
+      
             document.getElementById("submit").addEventListener("click", function(){
              const cityName = document.getElementById("city-name").value;
                               
-             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=6f13b23c89db2440ec011448e3c87513`)
+             fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=6f13b23c89db2440ec011448e3c87513`)
 
              .then(res=>res.json())
              .then(data=>{
